@@ -5,6 +5,14 @@ Created on Tue Nov 26 10:47:30 2019
 YOLO object detection with OpenCV
 Project guilde provided by pyimagesearch
 
+This project is similar to my_yolo which forward a single image to the network
+instead of a video. The concept is pretty much the same, the only differnce is
+how you hanld a image or a video which consists a series of image (frame).
+
+The input argument for this project includes the path of the video, YOLO model, 
+and the directory for the output model. Becareful to add the file name as well
+in the output directory.
+
 
 
 
@@ -20,7 +28,7 @@ import os
 
 
 path_input_video = "D:\\Jen\\_Documents\\eLearning\\Computer Vision\\pyimagesearch\\yolo-object-detection\\videos\\airport.mp4"
-path_output_video = "D:\\Jen\\_Documents\\eLearning\\Computer Vision\\pyimagesearch\\yolo-object-detection\\output\\"
+path_output_video = "D:\\Jen\\_Documents\\eLearning\\Computer Vision\\pyimagesearch\\yolo-object-detection\\output\\out.avi"
 path_YOLO_model = "D:\\Jen\\_Documents\\eLearning\\Computer Vision\\pyimagesearch\\yolo-object-detection\\yolo-coco\\"
 confidence_thresh = 0.5
 nms_thresh=0.2
