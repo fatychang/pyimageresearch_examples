@@ -20,10 +20,10 @@ import numpy as np
 import time
 import cv2
 
-dir_input_image = "D:\\Jen\\_Documents\\eLearning\\Computer Vision\\pyimagesearch\\SSDs-object-detection\\images\\example_01.jpg"
+dir_input_image = "D:\\Jen\\_Documents\\eLearning\\Computer Vision\\pyimagesearch\\SSDs-object-detection\\images\\example_03.jpg"
 dir_coffe_prototxt = "D:\\Jen\\_Documents\\eLearning\\Computer Vision\\pyimagesearch\\SSDs-object-detection\\MobileNetSSD_deploy.prototxt.txt"
 dir_coffe_model = "D:\\Jen\\_Documents\\eLearning\\Computer Vision\\pyimagesearch\\SSDs-object-detection\\MobileNetSSD_deploy.caffemodel"
-confidence_thresh = 0.5
+confidence_thresh = 0.3
 
 # initialize the list of class labels MobileNet SSD was trained to detect
 # and generate a set of bonding box colors for each class
@@ -43,7 +43,9 @@ net = cv2.dnn.readNetFromCaffe(dir_coffe_prototxt, dir_coffe_model)
 # by resizing to a fixed 300x300 pixels and then normalizing it
 image = cv2.imread(dir_input_image)
 (h, w) = image.shape[0:2]
-blob = cv2.dnn.blobFromImage(image, 1/255.0, (300, 300), 127.5)
+#blob = cv2.dnn.blobFromImage(image, 1/255.0, (300, 300), 127.5)
+blob = cv2.dnn.blobFromImage(cv2.resize(image, (300, 300)), 0.007843,
+	(300, 300), 127.5)
 
 
 # pass the blob through the network and obtain the detections and predictions
