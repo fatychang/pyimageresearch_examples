@@ -7,6 +7,9 @@ Deep learning for computer vision with python by Dr. Rosebroke, 2017
 
 Ch10 Neural Network Fundamentals - Multi-layer Networks with Keras
 In this project, it aims to train the network with MNIST dataset with Keras
+And visualizae the training process (loss and accuracy) along the training
+
+The accuracy reachs 92% but with ANN it may reach 99%.
 
 @author: jschang
 """
