@@ -56,7 +56,7 @@ H = model.fit(trainX, trainY, batch_size=32, epochs=100,
 print("[INFO] evaluating network...")
 predictions = model.predict(testX, batch_size=128)
 print(classification_report(testY.argmax(axis=1),
-            predictions.argmax(axis=1),target_names=[str(x) for x in lb.classes_]))
+            predictions.argmax(axis=1),target_names=labelNames))
 
 # plot the training loss and accuracy
 plt.style.use("ggplot")
