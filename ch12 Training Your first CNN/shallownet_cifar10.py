@@ -11,11 +11,15 @@ In this project, it aims to train the CNN with CIFAR-10 dataset with Keras
 @author: jschang
 """
 
+
+import sys
+sys.path.append('D:\Jen\_Documents\eLearning\Computer Vision\pyimagesearch\ch12 Training Your first CNN')
+
 from sklearn.preprocessing import LabelBinarizer
 from sklearn.metrics import classification_report
 from keras.datasets import cifar10
 from keras.optimizers import SGD
-
+from shallownet import ShallowNet
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -38,7 +42,13 @@ labelNames = ["airplane", "automobile", "bird", "cat", "deer",
 # initialize the optimizer and model
 print("[INFO] compiling shallownet...")
 sgd = SGD(learning_rate=0.01)
+model = ShallowNet.build(width=32, height=32, depth=3, classes=10)
+model.compile(loss="categorical_crossentropy", optimizer=sgd,
+              metrics=["accuracy"])
 
+# train the network
+H = model.fit(trainX, trainY, validation_data=(testX, testY),
+              batch_size=32, epochs=40, verbose=1)
 
 
 
