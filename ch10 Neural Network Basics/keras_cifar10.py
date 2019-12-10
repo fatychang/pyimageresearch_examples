@@ -19,6 +19,7 @@ from keras.optimizers import SGD
 from keras.datasets import cifar10
 import matplotlib.pyplot as plt
 import numpy as np
+import pickle
 
 # get the dataset (~170MB)
 (trainX, trainY), (testX, testY) = cifar10.load_data()
@@ -70,3 +71,16 @@ plt.xlabel("Epoch #")
 plt.ylabel("loss/accuracy")           
 plt.legend()
 plt.show()
+
+
+
+####################
+# save the model and its history to the disk if necessary
+#model.save("nn_cifar10_model.h5")
+
+# save the history
+#with open('nn_cifar10_model_history.pickle','wb') as file:
+#    pickle.dump(H.history, file)
+
+
+
