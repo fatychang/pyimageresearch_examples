@@ -22,6 +22,7 @@ from keras.optimizers import SGD
 from shallownet import ShallowNet
 import matplotlib.pyplot as plt
 import numpy as np
+import pickle
 
 # load the dataset
 (trainX, trainY), (testX, testY) = cifar10.load_data()
@@ -60,3 +61,23 @@ predictions = model.predict(testX, batch_size=32)
 print(classification_report(testY.argmax(axis=1),
             predictions.argmax(axis=1),target_names=labelNames))
 
+# plot the training loss and accuracy
+plt.style.use("ggplot")
+plt.figure()
+plt.plot(np.arange(0, 40), H.history["loss"], label="train_loss")
+plt.plot(np.arange(0, 40), H.history["val_loss"], label="val_loss")
+plt.plot(np.arange(0, 40), H.history["accuracy"], label="train_acc")
+plt.plot(np.arange(0, 40), H.history["val_accuracy"], label="val_acc")
+plt.title("Training Loss and Accuracy")
+plt.xlabel("Epoch #")
+plt.ylabel("loss/accuracy")           
+plt.legend()
+plt.show()
+
+#####################
+## save the model and its history to the disk if necessary
+#model.save("shallownet_cifar10_model.h5")
+#
+## save the history
+#with open('shallownet_cifar10_model_history.pickle','wb') as file:
+#    pickle.dump(H.history, file)
