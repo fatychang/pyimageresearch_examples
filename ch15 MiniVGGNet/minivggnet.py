@@ -34,7 +34,7 @@ class miniVGGNet:
         # chanDim=-1 represents channel last order
         chanDim = -1
         
-        if K.image_date_format()=="channel_first":
+        if K.image_data_format() == "channels_first":
             inputShape = (depth, height, width)
             # chanDim=1 represnets channel first order
             chanDim = 1
