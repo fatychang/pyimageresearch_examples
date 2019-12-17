@@ -26,13 +26,15 @@ class TrainingMonitor(BaseLogger):
         self.figPath = figPath
         self.jsonPath = jsonPath
         self.startAt = startAt
+        self.H={}
+        self.ctr=0
         
     def on_training_begin(self, logs={}):
         # initailize the history dictionary
         self.H={}
         
         # if the json history exists, load the training history
-        is self.jsonPath is not None:
+        if self.jsonPath is not None:
             if os.path.exists(self.jsonPath):
                 self.H = json.loads(open(self.jsonPath).read())
                 
@@ -46,7 +48,7 @@ class TrainingMonitor(BaseLogger):
     def on_epoch_end(self, epoch, logs={}):
         # loop over the logs and update the loss, accuracy, etc.
         # for the entire training process
-        for (k, v) in logs.item():
+        for (k, v) in logs.items():
             l = self.H.get(k,[])
             l.append(v)
             self.H[k] = l
@@ -60,6 +62,7 @@ class TrainingMonitor(BaseLogger):
         
         # construct the actual plot at least every two epochs have passed
         if len(self.H["loss"]) > 1:
+            self.ctr+=1
             # plot the training loss and accuracy
             N = np.arange(0, len(self.H["loss"]))
             plt.style.use("ggplot")
@@ -75,7 +78,8 @@ class TrainingMonitor(BaseLogger):
             plt.legend()
             
             # save the figure
-            plt.savefig(self.figPath)
+            figname = self.figPath + "_{}".format(self.ctr)
+            plt.savefig(figname)
             plt.close()
                     
         
