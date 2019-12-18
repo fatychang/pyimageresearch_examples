@@ -31,7 +31,10 @@ LABELS =  ["background", "aeroplane", "bicycle", "bird", "boat",
             	"dog", "horse", "motorbike", "person", "pottedplant", "sheep",
             	"sofa", "train", "tvmonitor"]
 
-IGNORE = ["person"]
+IGNORE = ["background", "aeroplane", "bicycle", "bird", "boat",
+            	"bus", "car", "cat", "chair", "cow", "diningtable",
+            	"dog", "horse", "motorbike", "person", "pottedplant", "sheep",
+            	"sofa", "train", "tvmonitor"]q
 
 COLORS = np.random.randint(0, 255, size=(len(LABELS), 3), dtype="uint8")
 
@@ -97,10 +100,11 @@ while(True):
 
 # stop the timer and display FPS information
 fps.stop()
+vs.stop()
 print("[INFO] elapsed time: {:.2f}".format(fps.elapsed()))
 print("[INFO] approx. FPS:{:.2f}".format(fps.fps()))     
 cv2.destroyAllWindows()
-vs.stop()
+
     
     
     

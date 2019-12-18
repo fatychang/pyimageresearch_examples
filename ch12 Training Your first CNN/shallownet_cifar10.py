@@ -22,7 +22,7 @@ from keras.optimizers import SGD
 from shallownet import ShallowNet
 import matplotlib.pyplot as plt
 import numpy as np
-import pickle
+#import pickle
 
 # load the dataset
 (trainX, trainY), (testX, testY) = cifar10.load_data()

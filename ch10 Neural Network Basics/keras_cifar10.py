@@ -19,7 +19,7 @@ from keras.optimizers import SGD
 from keras.datasets import cifar10
 import matplotlib.pyplot as plt
 import numpy as np
-import pickle
+#import pickle
 
 # get the dataset (~170MB)
 (trainX, trainY), (testX, testY) = cifar10.load_data()
